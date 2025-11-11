@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 19:13:50 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/11/11 00:54:02 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/11/11 14:11:50 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -242,6 +242,16 @@ bool	Fixed::operator!=( float f ) const
 Fixed	Fixed::abs( void ) const
 {
 	return (*this < 0 ? *this * -1 : *this);
+}
+
+Fixed&	Fixed::min( Fixed& a, Fixed& b )
+{
+	return (a < b ? a : b);
+}
+
+Fixed&	Fixed::max( Fixed& a, Fixed& b )
+{
+	return (a > b ? a : b);
 }
 
 const Fixed&	Fixed::min( const Fixed& a, const Fixed& b )

@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 19:13:52 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/11/11 14:01:38 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/11/11 14:12:28 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,11 @@ class Fixed
 		int 	toInt( void ) const;
 		float	toFloat( void ) const;
 
-		bool	isZero( void ) const;
 		Fixed	abs( void ) const;
-		const Fixed&	min( const Fixed& a, const Fixed& b );
-		const Fixed&	max( const Fixed& a, const Fixed& b );
+		static Fixed&	min( Fixed& a, Fixed& b );
+		static Fixed&	max( Fixed& a, Fixed& b );
+		static const Fixed&	min( const Fixed& a, const Fixed& b );
+		static const Fixed&	max( const Fixed& a, const Fixed& b );
 };
 
 std::ostream&	operator<<( std::ostream &os, const Fixed& fp );
