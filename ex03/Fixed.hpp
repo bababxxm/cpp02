@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 19:13:52 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/11/10 20:37:56 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/11/11 14:01:38 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,23 +34,23 @@ class Fixed
 		~Fixed( void );
 		
 		Fixed&	operator=( const Fixed& other );
-		Fixed&	operator=(int n);
-		Fixed&	operator=(float f);
+		Fixed&	operator=( int n );
+		Fixed&	operator=( float f );
 
 		Fixed	operator+( const Fixed& other ) const;
 		Fixed	operator-( const Fixed& other ) const;
 		Fixed	operator*( const Fixed& other ) const;
 		Fixed	operator/( const Fixed& other ) const;
 
-		Fixed 	operator+(int n) const;
-    	Fixed 	operator-(int n) const;
-    	Fixed 	operator*(int n) const;
-    	Fixed 	operator/(int n) const;
+		Fixed 	operator+( int n ) const;
+    	Fixed 	operator-( int n ) const;
+    	Fixed 	operator*( int n ) const;
+    	Fixed 	operator/( int n ) const;
 
-		Fixed 	operator+(float f) const;
-    	Fixed 	operator-(float f) const;
-    	Fixed 	operator*(float f) const;
-    	Fixed 	operator/(float f) const;
+		Fixed 	operator+( float f ) const;
+    	Fixed 	operator-( float f ) const;
+    	Fixed 	operator*( float f ) const;
+    	Fixed 	operator/( float f ) const;
 
 		Fixed&	operator++( void );
 		Fixed&	operator--( void );
