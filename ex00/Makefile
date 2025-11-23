@@ -6,14 +6,16 @@
 #    By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/23 19:13:56 by sklaokli          #+#    #+#              #
-#    Updated: 2025/11/10 15:11:53 by sklaokli         ###   ########.fr        #
+#    Updated: 2025/11/23 22:12:09 by sklaokli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:=	a.out
 
-SRCS	:=	main.cpp Fixed.cpp
-OBJS	:=	$(SRCS:%.cpp=%.o)
+SRC		:=	main.cpp \
+			Fixed.cpp
+
+OBJ		:=	$(SRC:%.cpp=%.o)
 
 CPP		:=	c++
 FLAGS	:=	-Wall -Wextra -Werror -std=c++98 -pedantic
@@ -25,11 +27,11 @@ all:	$(NAME)
 %.o:	%.cpp
 		$(CPP) $(FLAGS) -c $< -o $@
 
-$(NAME):	$(OBJS) Makefile
-			$(CPP) $(FLAGS) $(OBJS) -o $(NAME)
+$(NAME):	$(OBJ) Makefile
+			$(CPP) $(FLAGS) $(OBJ) -o $(NAME)
 
 clean:		Makefile
-			$(RM) $(OBJS)
+			$(RM) $(OBJ)
 
 fclean:		clean Makefile
 			$(RM) $(NAME)

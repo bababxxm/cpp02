@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 19:13:52 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/11/11 14:12:04 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/11/23 22:56:31 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,13 @@
 # include <cmath>
 # include <iostream>
 
-class Fixed
-{
+class Fixed {
 
 	private:
 
 		int					_fixed_point;
 		static const int	_fractional_bits;
-	
+
 	public:
 
 		Fixed( void );
@@ -34,8 +33,6 @@ class Fixed
 
 		void	setRawBits( int raw );
 		int		getRawBits( void ) const;
-		int 	toInt( void ) const;
-		float	toFloat( void ) const;
 		
 		Fixed&	operator=( const Fixed& other );
 
@@ -56,6 +53,8 @@ class Fixed
 		bool	operator==( const Fixed& other ) const;
 		bool	operator!=( const Fixed& other ) const;
 
+		int 	toInt( void ) const;
+		float	toFloat( void ) const;
 		static Fixed&	min( Fixed& a, Fixed& b );
 		static Fixed&	max( Fixed& a, Fixed& b );
 		static const Fixed&	min( const Fixed& a, const Fixed& b );

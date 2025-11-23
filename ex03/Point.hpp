@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 15:16:13 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/11/10 17:17:07 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/11/23 22:54:48 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 
 # include "Fixed.hpp"
 
-class Point
-{
+class Point {
 
 	private:
 
@@ -29,14 +28,14 @@ class Point
 		Point( const Point& other );
 		~Point( void );
 
+		Fixed	getX( void ) const;
+		Fixed	getY( void ) const;
+
 		Point&	operator=( const Point& other );
 		Point	operator+( const Point& other );
 		Point	operator-( const Point& other );
 		Point	operator*( const Point& other );
 		Point	operator/( const Point& other );
-
-		Fixed	getX( void ) const;
-		Fixed	getY( void ) const;
 		
 };
 

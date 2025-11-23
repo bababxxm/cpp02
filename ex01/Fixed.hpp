@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 19:13:52 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/11/10 14:31:35 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/11/23 22:33:10 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 # include <cmath>
 # include <iostream>
 
-class Fixed
-{
+class Fixed {
 
 	private:
 

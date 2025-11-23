@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 19:13:52 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/11/11 14:12:28 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/11/23 22:55:03 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 # include <cmath>
 # include <iostream>
 
-class Fixed
-{
+class Fixed {
 
 	private:
 
@@ -32,7 +31,10 @@ class Fixed
 		Fixed( float f );
 		Fixed( const Fixed& other );
 		~Fixed( void );
-		
+
+		void	setRawBits( int raw );
+		int		getRawBits( void ) const;
+
 		Fixed&	operator=( const Fixed& other );
 		Fixed&	operator=( int n );
 		Fixed&	operator=( float f );
@@ -78,8 +80,6 @@ class Fixed
 		bool	operator==( float f ) const;
 		bool	operator!=( float f ) const;
 
-		void	setRawBits( int raw );
-		int		getRawBits( void ) const;
 		int 	toInt( void ) const;
 		float	toFloat( void ) const;
 
