@@ -6,59 +6,59 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 19:13:50 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/11/23 23:10:00 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/12/03 16:11:07 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
 const float	Fixed::_epsilon = 1e-4f;
-const int	Fixed::_fractional_bits = 8;
+const int	Fixed::_fractionalBits = 8;
 
-Fixed::Fixed( void ) : _fixed_point( 0 ) {}
+Fixed::Fixed( void ) : _rawBits( 0 ) {}
 
-Fixed::Fixed( int n ) : _fixed_point( n << _fractional_bits ) {}
+Fixed::Fixed( int n ) : _rawBits( n << _fractionalBits ) {}
 
-Fixed::Fixed( float f ) : _fixed_point( roundf( f * ( 1 << _fractional_bits ) ) ) {}
+Fixed::Fixed( float f ) : _rawBits( roundf( f * ( 1 << _fractionalBits ) ) ) {}
 
-Fixed::Fixed( const Fixed& other ) : _fixed_point( other._fixed_point ) {}
+Fixed::Fixed( const Fixed& other ) : _rawBits( other._rawBits ) {}
 
 Fixed::~Fixed( void ) {}
 
 void	Fixed::setRawBits( int raw ) {
-	_fixed_point = raw;
+	_rawBits = raw;
 }
 
 int		Fixed::getRawBits( void ) const {
-	return ( _fixed_point );
+	return ( _rawBits );
 }
 
 Fixed&	Fixed::operator=( const Fixed& other ) {
 	if ( this != &other ) {
-		_fixed_point = other._fixed_point;
+		_rawBits = other._rawBits;
 	}
 	return ( *this );
 }
 
 Fixed& Fixed::operator=( int n ) {
-	_fixed_point = n << _fractional_bits;
+	_rawBits = n << _fractionalBits;
 	return ( *this );
 }
 
 Fixed& Fixed::operator=( float f ) {
-	_fixed_point = roundf( f * ( 1 << _fractional_bits ) );
+	_rawBits = roundf( f * ( 1 << _fractionalBits ) );
 	return ( *this );
 }
 
 Fixed	Fixed::operator+( const Fixed& other ) const {
 	Fixed	res;
-	res.setRawBits( _fixed_point + other._fixed_point );
+	res.setRawBits( _rawBits + other._rawBits );
 	return ( res );
 }
 
 Fixed	Fixed::operator-( const Fixed& other ) const {
 	Fixed	res;
-	res.setRawBits( _fixed_point - other._fixed_point );
+	res.setRawBits( _rawBits - other._rawBits );
 	return ( res );
 }
 
@@ -66,8 +66,8 @@ Fixed	Fixed::operator*( const Fixed& other ) const {
 	Fixed	res;
 	long	temp;
 
-	temp = ( long )_fixed_point * other._fixed_point;
-	res._fixed_point = temp >> _fractional_bits;
+	temp = ( long )_rawBits * other._rawBits;
+	res._rawBits = temp >> _fractionalBits;
 	return ( res );
 }
 
@@ -75,11 +75,11 @@ Fixed	Fixed::operator/( const Fixed& other ) const {
 	Fixed	res;
 	long	temp;
 
-	if ( other._fixed_point == 0 ) {
+	if ( other._rawBits == 0 ) {
 		std::cerr << "Undefined Behavior!" << std::endl;
 	}
-	temp = ( ( long )_fixed_point << _fractional_bits ) / other._fixed_point;
-	res._fixed_point = temp;
+	temp = ( ( long )_rawBits << _fractionalBits ) / other._rawBits;
+	res._rawBits = temp;
 	return ( res );
 }
 
@@ -116,41 +116,41 @@ Fixed	Fixed::operator/( float f ) const {
 }
 
 Fixed&	Fixed::operator++( void ) {
-	++_fixed_point;
+	++_rawBits;
 	return ( *this );
 }
 
 Fixed&	Fixed::operator--( void ) {
-	--_fixed_point;
+	--_rawBits;
 	return ( *this );
 }
 
 Fixed	Fixed::operator++( int ) {
 	Fixed	temp( *this );
-	_fixed_point++;
+	_rawBits++;
 	return ( temp );
 }
 
 Fixed	Fixed::operator--( int ) {
 	Fixed 	temp( *this );
-	_fixed_point--;
+	_rawBits--;
 	return ( temp );
 }
 
 bool	Fixed::operator>( const Fixed& other ) const {
-	return ( _fixed_point > other._fixed_point );
+	return ( _rawBits > other._rawBits );
 }
 
 bool	Fixed::operator>=( const Fixed& other ) const {
-	return ( _fixed_point >= other._fixed_point );
+	return ( _rawBits >= other._rawBits );
 }
 
 bool	Fixed::operator<( const Fixed& other ) const {
-	return ( _fixed_point < other._fixed_point );
+	return ( _rawBits < other._rawBits );
 }
 
 bool	Fixed::operator<=( const Fixed& other ) const {
-	return ( _fixed_point <= other._fixed_point );
+	return ( _rawBits <= other._rawBits );
 }
 
 bool	Fixed::operator==( const Fixed& other ) const {
@@ -235,9 +235,9 @@ std::ostream&	operator<<( std::ostream& os, const Fixed& fp ) {
 }
 
 int	Fixed::toInt( void ) const {
-	return ( _fixed_point >> _fractional_bits );
+	return ( _rawBits >> _fractionalBits );
 }
 
 float	Fixed::toFloat( void ) const {
-	return ( static_cast<float>( _fixed_point ) / ( 1 << _fractional_bits ) );
+	return ( static_cast<float>( _rawBits ) / ( 1 << _fractionalBits ) );
 }

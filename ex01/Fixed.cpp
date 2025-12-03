@@ -6,27 +6,27 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 19:13:50 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/11/23 23:08:50 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/12/03 15:59:12 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-const int	Fixed::_fractional_bits = 8;
+const int	Fixed::_fractionalBits = 8;
 
-Fixed::Fixed( void ) : _fixed_point( 0 ) {
+Fixed::Fixed( void ) : _rawBits( 0 ) {
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed( int raw ) : _fixed_point ( raw << _fractional_bits ) {
+Fixed::Fixed( int raw ) : _rawBits ( raw << _fractionalBits ) {
 	std::cout << "Int constructor called" << std::endl;
 }
 
-Fixed::Fixed( float raw ) : _fixed_point( static_cast<int>( roundf( raw * ( 1 << _fractional_bits ) ) ) ) {
+Fixed::Fixed( float raw ) : _rawBits( static_cast<int>( roundf( raw * ( 1 << _fractionalBits ) ) ) ) {
 	std::cout << "Float constructor called" << std::endl;
 }
 
-Fixed::Fixed( const Fixed& other ) : _fixed_point( other._fixed_point ) {
+Fixed::Fixed( const Fixed& other ) : _rawBits( other._rawBits ) {
 	std::cout << "Copy constructor called" << std::endl;
 }
 
@@ -35,18 +35,18 @@ Fixed::~Fixed( void ) {
 }
 
 void	Fixed::setRawBits( int raw ) {
-	_fixed_point = raw;
+	_rawBits = raw;
 }
 
 int		Fixed::getRawBits( void ) const {
 	std::cout << "getRawBits member function called" << std::endl; 
-	return ( _fixed_point );
+	return ( _rawBits );
 }
 
 Fixed&	Fixed::operator=( const Fixed& other ) {
 	std::cout << "Copy assignment operator called" << std::endl;
 	if ( this != &other ) {
-		_fixed_point = other._fixed_point;
+		_rawBits = other._rawBits;
 	}
 	return ( *this );
 }
@@ -57,10 +57,10 @@ std::ostream&	operator<<( std::ostream &os, const Fixed& fixed ) {
 }
 
 int	Fixed::toInt( void ) const {
-	return ( _fixed_point >> _fractional_bits );
+	return ( _rawBits >> _fractionalBits );
 }
 
 float	Fixed::toFloat( void ) const
 {
-	return ( static_cast<float>( _fixed_point ) / ( 1 << _fractional_bits ) );
+	return ( static_cast<float>( _rawBits ) / ( 1 << _fractionalBits ) );
 }

@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 15:35:45 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/11/23 23:02:12 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/12/03 16:11:44 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ Fixed	triangleArea( Point const a, Point const b, Point const c ) {
 }
 
 bool	bsp( Point const a, Point const b, Point const c, Point const point ) {
-	Fixed	sum;
 	Fixed	ABC = triangleArea( a, b, c );
 	Fixed	PAB = triangleArea( point, a, b );
 	Fixed	PBC = triangleArea( point, b, c );
@@ -31,6 +30,5 @@ bool	bsp( Point const a, Point const b, Point const c, Point const point ) {
 	if ( PAB == 0 || PBC == 0 || PCA == 0 ) {
 		return ( false );
 	}
-	sum = ABC - ( PAB + PBC + PCA );
-	return ( sum == 0 );
+	return ( ABC == PAB + PBC + PCA );
 }

@@ -6,7 +6,7 @@
 /*   By: sklaokli <sklaokli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 19:13:52 by sklaokli          #+#    #+#             */
-/*   Updated: 2025/11/23 22:29:41 by sklaokli         ###   ########.fr       */
+/*   Updated: 2025/12/03 15:59:12 by sklaokli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ class Fixed {
 
 	private:
 
-		int					_fixed_point;
-		static const int	_fractional_bits;
-	
+		int					_rawBits;
+		static const int	_fractionalBits;
+
 	public:
 
 		Fixed( void );
